@@ -1,7 +1,13 @@
 TEX=pdflatex
 FILE=./src/level_editing.tex
-OUT=./build/
+OUT=./out/
+OUTFILE=./out/level_editing.pdf
 
-all: $(FILE)
+build: $(FILE)
 	$(TEX) -output-directory $(OUT) $(FILE)
+
+open: $(OUTFILE)
+	open $(OUTFILE)
+
+
 
