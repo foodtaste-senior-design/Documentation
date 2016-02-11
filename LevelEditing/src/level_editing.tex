@@ -36,14 +36,49 @@ The purpose of this document is to demonstrate the process of designing levels a
 the \textsc{Styx and Stones} software program for the user to interact with. In the rest of this document the term
 ``the game'' refers to the ``\textsc{Styx and Stones}'' game program. The general process is to design the level in the
 \href{http://www.mapeditor.org}{\textsc{Tiled} 2D map editor}, make the level file readable in Unity using the
-\href{http://www.seanba.com/tiled2unity}{\textsc{Tiled2Unity}} command line tool, and read the file using a C#
-deserializer written in Unity.
+\href{http://www.seanba.com/tiled2unity}{\textsc{Tiled2Unity}} command line tool, and read the file using a C\#
+deserializer embedded in the \textsc{Unity} engine.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Architecture}
 \subsection{Tiled Map Editor}
+\textsc{Tiled} is a free and open source 2D tile-based map editor. \textsc{Tiled} allows the person in the role of
+``level designer'' to load in 2D assets and design a level. 2D asset files are formatted as an image file with
+individual assets formatted as a bitmapped sprite conforming to a fixed-size grid. \textsc{Tiled} uses an intuitive
+drag and drop layer-based interface for level design. \textsc{Styx and Stone} will implement layers as defined below.
+Note that these descriptions mention game mechanics that are handled by the game engine in \textsc{Unity}
+\begin{description}
+    \item[Background] \hfill \\
+        These are visuals that the player's character can not interact with. Unless specifically defined, background
+        assets will appear behind all other assets.
+    \item[Surfaces] \hfill \\
+        These are dimensional platforms. Except for certain circumstances, the player can not clip through these
+        platforms on collision.. Common types of surfaces are walls and floors.
+    \item[Collectibles] \hfill \\
+        Collectible objects are drawn when the level is loaded, and disappear when the player collides with them.
+        Their purpose is logically defined in the game engine.
+    \item[Switches] \hfill \\
+        Each switch will have a sprite consisting of two graphics. Switches are toggled by the player's character as
+        defined in the game engine. A switch has a boolean value, and the graphic displayed is based on the state of
+        this value. Switches are initialized when the level is loaded.
+    \item[Other Interactive] \hfill \\
+        There may be other interactive elements in the game, including doors and AI-controlled enemies.
+\end{description}
+
+Levels designed using \textsc{Tiled} are exported as \texttt{.tmx} files. TMX (Tile Map XML) is a tag-based object
+format. A level's TMX file defines the tileset file to use, graphical information about the level, and the layout data
+for the level. It should be noted that \textsc{Tiled} is a design tool rather than a development tool. Therefore, it
+is not included in the development repository for \textsc{Styx and Stones}.
+
 \subsection{Tiled2Unity Deserialization}
-\subsection{Unity}
+\textsc{Tiled2Unity} is a community-made open source tool for the \textsc{Unity} game development engine.
+\textsc{Tiled2Unity} provides deserialization for TMX files to make them readable by \textsc{Unity}. Primitive object
+interaction is also defined using \textsc{Tiled2Unity}, including sprite transitions and collisions. The mechanics of
+these behaviors are defined in \textsc{Unity}.
+
+\subsection{Unity Game Development Engine}
+\textsc{Unity} is cross-platform engine and software development kit for game development. All game logic is defined
+within \textsc{Unity}.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Loading Levels}
