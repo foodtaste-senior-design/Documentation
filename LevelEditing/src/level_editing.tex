@@ -82,6 +82,28 @@ within \textsc{Unity}.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Loading Levels}
+The game engine defines a \textbf{Level Select} menu. At this menu the player is presented with levels that they may
+choose to load. Doing so displays a temporary ``Loading'' screen. At this point the game engine creates an instance of
+a \texttt{Level} class.
+
+The \texttt{Level} constructor is passed a hashed value from the game engine corresponding to the level that the
+player selected. These values are saved in a hash table with ordered keys. The hash key corresponds to a
+\texttt{.tmx} level file.
+
+The constructer then calls a \texttt{loadLevel} method that locates this file. If the file is not found in the data
+store, the program returns to the \textbf{Level Select} screen and displays an error to the user. If the file is
+found, then it is loaded and deserialized so the level can be stored in memory. The \texttt{Level} object is
+responsible for the state of the level and the graphics in the level.
+
+Once the level is completed (as defined by the mechanics in the game engine) the program displays the ``Loading''
+screen. At this point the destructor method is called on the existing ``Level'' object, which will free all of the
+currently-used assets and attributes from memory. The next ordered hash key is loaded, and another \texttt{Level}
+object will be created.
+
+Additionally, user may enter a \textbf{Pause} menu while a level is loaded by invoking a corresponding ``pause'' event.
+At this point the user may exit the level, in which case the \texttt{Level} destructor is called.
+
+The \texttt{Level} class may be implemented as a singleton. This decision has not yet been made.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Current Challenges}
