@@ -3,9 +3,10 @@
 \usepackage{amssymb}
 \usepackage{bm}
 \usepackage{cancel}
+\usepackage{hyperref}
 \usepackage{tikz}
 
-\title{Level Editing Flow and Architecture}
+\title{Styx and Stones: Level Editing Flow and Architecture}
 \author{
     \large
     Devin McGinty\\
@@ -19,14 +20,37 @@
 \tableofcontents
 \newpage
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Overview}
+Styx and Stones is a 2D platforming game created by the FoodTaste Drexel Senior Project Team consisting of members
+\begin{itemize}
+    \item \href{mailto:jinu.jacob@drexel.edu}{Jinu Jacob}
+    \item \href{mailto:brendan.k.kelley@drexel.edu}{Brendan Kelley}
+    \item \href{mailto:bailey.s.myers-morgan@drexel.edu}{Bailey Myers-Morgan}
+    \item \href{mailto:dlm348@drexel.edu}{Devin McGinty}
+    \item \href{mailto:le.n.nguyen@drexel.edu}{Le Nguyen}
+    \item \href{mailto:nicole.m.vecere@drexel.edu}{Nicole Vecere}
+\end{itemize}
 
+The purpose of this document is to demonstrate the process of designing levels and loading them into an instance of
+the \textsc{Styx and Stones} software program for the user to interact with. In the rest of this document the term
+``the game'' refers to the ``\textsc{Styx and Stones}'' game program. The general process is to design the level in the
+\href{http://www.mapeditor.org}{\textsc{Tiled} 2D map editor}, make the level file readable in Unity using the
+\href{http://www.seanba.com/tiled2unity}{\textsc{Tiled2Unity}} command line tool, and read the file using a C#
+deserializer written in Unity.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Architecture}
 \subsection{Tiled Map Editor}
 \subsection{Tiled2Unity Deserialization}
 \subsection{Unity}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Loading Levels}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Current Challenges}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \end{document}
 
